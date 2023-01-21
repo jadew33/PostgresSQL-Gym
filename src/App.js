@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Auth from "./Components/Authentication/Auth";
+import { Routes, Route } from "react-router-dom";
+import ClientNav from "./Components/Nav/ClientNav";
+import ClientProfile from "./Components/Profile/ClientProfile";
+import ClientSchedule from "./Components/Schedule/ClientSchedule";
+import AdminSchedule from "./Components/Schedule/AdminSchedule";
+import AdminProfile from "./Components/Profile/AdminProfile";
+import AdminUsers from "./Components/Users.js/Users";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ClientNav />
+      <Routes>
+        <Route path="/admin/schedule" element={<AdminSchedule />} />
+        <Route path="/admin/profile" element={<AdminProfile />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/client/schedule" element={<ClientSchedule />} />
+        <Route path="/client/profile" element={<ClientProfile />} />
+        <Route path="*" element={<Auth />} />
+      </Routes>
     </div>
   );
 }
